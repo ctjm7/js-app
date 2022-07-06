@@ -6,10 +6,10 @@ let pokemonList = [
 ];
 
 // returns pokemon name and height. If height is greater than 1.0 also returns "Wow, that's big!" //
-for (let i = 0; i < pokemonList.length; i++) {
-  if (pokemonList[i].height < 1.0) {
-     document.write(pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')' + '<br>');
-   } else {
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) - Wow, that's big!` + '<br>');
-   }
-}
+pokemonList.forEach(function(pokemon) {
+  if (pokemon.height < 1.0) {
+    document.write(pokemon.name + ' (height: ' + pokemon.height + ')' + '<br>');
+  } else {
+   document.write(`${pokemon.name} (height: ${pokemon.height}) - Wow, that's big!` + '<br>');
+  }
+});
