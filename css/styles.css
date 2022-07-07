@@ -1,9 +1,28 @@
 body {
   font-family: 'Encode Sans', sans-serif;
   font-weight: 400;
-  margin: 0;
+  margin: 10px;
 }
 
 header {
 padding: 10px 10px;
+}
+
+.pokemon-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.button-pokemon-list {
+  display: inline-block;
+  background-color: rgba(32, 32, 192, 0.854);
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: 0.6s;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 4px 2px;
 }
