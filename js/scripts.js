@@ -73,12 +73,12 @@ let pokemonRepository = (function () {
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
     console.log(pokemon);
-    showModal();
+    showModal(pokemon);
 
     });
   }
 
-  function showModal() {
+  function showModal(pokemon) {
 
       // clear existing modal content
       modalContainer.innerHTML = '';
@@ -134,9 +134,7 @@ let pokemonRepository = (function () {
     getAll,
     addListItem,
     loadList,
-    loadDetails,
-    showModal,
-    hideModal
+    loadDetails
   };
 })();
 

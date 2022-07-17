@@ -1,3 +1,4 @@
+html,
 body {
   font-family: 'Encode Sans', sans-serif;
   font-weight: 400;
@@ -33,19 +34,29 @@ button:hover, button:focus, .button:hover, .button:focus {
     opacity: 0.8;
   }
 
-  /* #modal-container {
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  } */
+  #modal-container {
+    display: none;
+  }
+  
+  #modal-container.is-visible {
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 
-#modal-container.is-visible {
+  /* to show it above other content */
+  z-index: 999;
+
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto;
+
+  /* this is used to center the modal */
   display: block;
+  text-align: center;
 }
 
 .modal {
@@ -59,11 +70,13 @@ button:hover, button:focus, .button:hover, .button:focus {
   text-align: left;
 }
 
-
 .modal-close {
-  align-items: right;
-  font-size: 25px;
-  display: inline-block;
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
 }
 
 @media all and (max-width: 500px) {
