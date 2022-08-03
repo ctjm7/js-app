@@ -7,18 +7,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="shortcut icon" href="img/favicon.ico" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="dist/styles.min.css">
     <title>PokeDex</title>
   </head>
 
   <body>
     <nav class="navbar navbar-light" style="background-color:rgba(242, 231, 12, 0.987);">
-      <a class="navbar-brand" href="#"></a>
-        <img src="img/pokelogo.svg" alt="pokemon logo">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-        </form>
+      <div>
+        <a class="navbar-brand" href="#"></a>
+          <img src="img/pokelogo.svg" alt="pokemon logo">
+      </div>
+      <div class="input-group mb-2 mt-2" style="width: 300px">
+        <input class="form-control mr-sm-2" id="input-pokemon" type="text" placeholder="search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search-button" onclick="searchList()">Search</button>
+        </div>
+      </div>
     </nav>
 
   <!-- Modal -->
@@ -41,8 +45,9 @@
       </div>
     </div>
 
+    <div style="background-image: url('img/pika.png');">
     <ul class="list-group"></ul>
-
+    </div>
   <!-- order of js files needs to be promise, fetch, then scripts to load properly -->
     <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -52,7 +57,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="dist/scripts.min.js"></script>
 
   </body>
 

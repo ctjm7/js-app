@@ -65,7 +65,7 @@ let pokemonRepository = (function () {
       return response.json();
     }).then(function (details) {
       // assign image and details to the item
-      item.imgUrl = details.sprites.front_default;
+      item.imgUrl = details.sprites.other.dream_world.front_default;
       item.height = details.height;
       item.types = details.types.map((type) => type.type.name).join(', ');
       item.abilities = details.abilities.map((ability) => ability.ability.name).join(', ');
@@ -92,7 +92,7 @@ let pokemonRepository = (function () {
 
     // set elements to be displayed in modal
     let nameElement = $('<h1>' + pokemon.name + '</h1>');
-    let imgElement = $('<img class="modal-img" style="width:50%">');
+    let imgElement = $('<img class="modal-img" style="width:40%">');
     imgElement.attr('src', pokemon.imgUrl);
     let heightElement = $('<p>' + 'Height : ' + pokemon.height + '</p>');
     let typesElement = $('<p>' + 'Types : ' + pokemon.types + '</p>');
@@ -105,18 +105,51 @@ let pokemonRepository = (function () {
     modalBody.append(abilitiesElement);
   }
 
+  function clear() {
+    document.querySelector('.list-group').innerHTML = '';
+  }
+
   return {
     add,
     getAll,
     addListItem,
     loadList,
-    loadDetails
+    loadDetails,
+    clear
   };
 })();
 
-pokemonRepository.loadList().then(function() {
-  // now the data is loaded!
+function searchList() {
+  let searchInput = document.querySelector('#input-pokemon').value;
+  console.log(searchInput);
+  render(searchInput);
+  searchInput = '';
+}
+
+document.querySelector('#search-button').addEventListener('keydown', function(event) {
+  if(event.key === 'Enter') {
+    console.log(event);
+    event.preventDefault();
+    searchList();
+  }
+});
+
+function render(searchName) {
+  pokemonRepository.clear();
+  if(searchName) {
+    pokemonRepository.getAll().forEach(function(pokemon) {
+    if(pokemon.name.includes(searchName)) {
+      pokemonRepository.addListItem(pokemon);
+    }
+  });
+  return
+  }
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
+}
+
+pokemonRepository.loadList().then(function() {
+  // now the data is loaded!
+  render();
 });
