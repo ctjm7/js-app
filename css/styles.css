@@ -19,6 +19,12 @@ button:hover, button:focus, .button:hover, .button:focus {
     opacity: 0.8;
   }
 
+ .modal-content {
+  margin: auto;
+  background: rgb(74, 74, 206);
+  color: rgba(242, 231, 12, 0.987);
+ }
+
 @media all and (max-width: 500px) {
   .list-group {
     width: 100%;
