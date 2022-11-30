@@ -18,7 +18,7 @@
           <img src="img/pokelogo.svg" alt="pokemon logo">
       </div>
       <div class="input-group mb-2 mt-2" style="width: 300px">
-        <input class="form-control mr-sm-2" id="input-pokemon" type="text" placeholder="search" aria-label="Search">
+        <input class="form-control mr-sm-2" id="input-pokemon" onkeydown="searchList()" type="text" placeholder="search" aria-label="Search">
         <div class="input-group-append">
           <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search-button" onclick="searchList()">Search</button>
         </div>
