@@ -1,6 +1,6 @@
-let pokemonRepository = (function () {
-  let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+const pokemonRepository = (function () {
+  const pokemonList = [];
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   //adds new pokemon and characteristics to list and checks for object
   function add(pokemon) {
@@ -20,13 +20,13 @@ let pokemonRepository = (function () {
   }
 
   function addListItem(pokemon){
-    let pokemonList = document.querySelector('.list-group');
+    const pokemonList = document.querySelector('.list-group');
     // pokemon is assigned to an unordered list
-    let pokemonListItem = document.createElement('li');
+    const pokemonListItem = document.createElement('li');
     pokemonListItem.classList.add('list-group-item', 'col-6', 'mx-auto', 'border-0');
 
     // assigns a button for each pokemon
-    let pokemonButton = document.createElement('button');
+    const pokemonButton = document.createElement('button');
     pokemonButton.innerText = pokemon.name;
     pokemonButton.classList.add('btn', 'btn-default', 'btn-block', 'font-weight-bold');
     pokemonButton.setAttribute("data-toggle", "modal");
@@ -51,7 +51,6 @@ let pokemonRepository = (function () {
           detailsUrl: url
         };
         add(pokemon);
-        console.log(pokemon);
       });
     }).catch(function (e) {
       console.error(e);
@@ -60,7 +59,7 @@ let pokemonRepository = (function () {
 
   // fetches details and image of each pokemon
   function loadDetails(item) {
-    let url = item.detailsUrl;
+    const url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
@@ -83,20 +82,20 @@ let pokemonRepository = (function () {
   }
 
   function showModal(pokemon) {
-    let modalBody = $('.modal-body');
-    let modalTitle = $('.modal-title');
+    const modalBody = $('.modal-body');
+    const modalTitle = $('.modal-title');
 
     // clear existing content of modal
     modalTitle.empty();
     modalBody.empty();
 
     // set elements to be displayed in modal
-    let nameElement = $('<h1>' + pokemon.name + '</h1>');
-    let imgElement = $('<img class="modal-img" style="width:40%">');
+    const nameElement = $('<h1>' + pokemon.name + '</h1>');
+    const imgElement = $('<img class="modal-img" style="width:40%">');
     imgElement.attr('src', pokemon.imgUrl);
-    let heightElement = $('<p>' + 'Height : ' + pokemon.height + '</p>');
-    let typesElement = $('<p>' + 'Types : ' + pokemon.types + '</p>');
-    let abilitiesElement = $('<p>' + 'Ablilities : ' + pokemon.abilities + '</p>')
+    const heightElement = $('<p>' + 'Height : ' + pokemon.height + '</p>');
+    const typesElement = $('<p>' + 'Types : ' + pokemon.types + '</p>');
+    const abilitiesElement = $('<p>' + 'Ablilities : ' + pokemon.abilities + '</p>')
 
     modalTitle.append(nameElement);
     modalBody.append(imgElement);
@@ -120,13 +119,13 @@ let pokemonRepository = (function () {
 })();
 
 function searchList() {
-  let searchInput = document.querySelector('#input-pokemon').value;
+  const searchInput = document.querySelector('#input-pokemon').value;
   console.log(searchInput);
   render(searchInput);
   searchInput = '';
 }
 
-document.querySelector('#search-button').addEventListener('keydown', function(event) {
+document.querySelector('#input-pokemon').addEventListener('keydown', function(event) {
   if(event.key === 'Enter') {
     console.log(event);
     event.preventDefault();
